@@ -79,7 +79,9 @@ cityInput.addEventListener("keyup", function(event)
 
         if(data.message != "city not found" && data.cod != "404")
         {
-          var location = data.name;
+          var location = "Forecast " + data.name;
+          var celsius = parseFloat(data.main.temp);
+          var farhen = celsius*1.8 + 32;
           var temperature = data.main.temp;
           var weatherType = data.weather[0].description;
           var realFeel = data.main.feels_like;
@@ -95,6 +97,7 @@ cityInput.addEventListener("keyup", function(event)
         
           document.getElementById("locationName").innerHTML = location;
           document.getElementById("temperatureValue").innerHTML = temperature + "<sup>o</sup>C";
+          document.getElementById("farenheitValue").innerHTML = farhen + "<sup>o</sup>F"
           document.getElementById("weatherType").innerHTML = weatherType;
           document.getElementById("realFeelAdditionalValue").innerHTML = realFeel + "<sup>o</sup>C";
           document.getElementById("windSpeedAdditionalValue").innerHTML = windSpeed + " km/h";
